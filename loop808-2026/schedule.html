@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>루프808 인플루언서 일정</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --border: #222;
+    --fg: #f0f0f0;
+    --fg-dim: #777;
+    --accent: #FF5733;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f7f7f7;
+      --surface: #fff;
+      --border: #e0e0e0;
+      --fg: #111;
+      --fg-dim: #888;
+      --accent: #FF5733;
+      color-scheme: light;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Noto Sans KR', system-ui, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding-inline: 16px;
+    padding-block: 28px 48px;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+  h1 { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
+  .meta { font-size: 12px; color: var(--fg-dim); margin-bottom: 20px; }
+  .date-group { margin-bottom: 24px; }
+  .date-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px 16px;
+    align-items: center;
+    padding: 10px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 6px;
+  }
+  .row-left { min-width: 0; }
+  .id { font-weight: 700; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .link a { font-size: 11px; color: var(--fg-dim); text-decoration: none; word-break: break-all; }
+  .link a:hover { color: var(--accent); }
+  .row-right { text-align: right; flex-shrink: 0; }
+  .time { font-size: 13px; font-weight: 500; }
+  .sub { font-size: 11px; color: var(--fg-dim); margin-top: 2px; }
+  .count { font-size: 12px; color: var(--fg-dim); margin-top: 8px; text-align: right; }
+  @media (max-width: 480px) {
+    .row { grid-template-columns: 1fr; }
+    .row-right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<h1>루프808</h1>
+<p class="meta">총 4명 · 2026년 11~12월</p>
+
+<div class="date-group">
+  <div class="date-label">11/26 (목)</div>
+  <div class="row">
+    <div class="row-left">
+      <div class="id">muk_tteul</div>
+      <div class="link"><a href="https://www.instagram.com/muk_tteul/reels/" target="_blank">instagram.com/muk_tteul/reels/</a></div>
+    </div>
+    <div class="row-right">
+      <div class="time">오후 7시</div>
+    </div>
+  </div>
+</div>
+
+<div class="date-group">
+  <div class="date-label">11/28 (토)</div>
+  <div class="row">
+    <div class="row-left">
+      <div class="id">muk._.suzy_</div>
+      <div class="link"><a href="https://www.instagram.com/muk._.suzy_/" target="_blank">instagram.com/muk._.suzy_/</a></div>
+    </div>
+    <div class="row-right">
+      <div class="time">오후 6시</div>
+    </div>
+  </div>
+</div>
+
+<div class="date-group">
+  <div class="date-label">12/2 (수)</div>
+  <div class="row">
+    <div class="row-left">
+      <div class="id">themukeou</div>
+      <div class="link"><a href="https://www.instagram.com/p/DWQpYW9EpZT/" target="_blank">instagram.com/p/DWQpYW9EpZT/</a></div>
+    </div>
+    <div class="row-right">
+      <div class="time">오후 5시</div>
+    </div>
+  </div>
+</div>
+
+<div class="date-group">
+  <div class="date-label">12/4 (금)</div>
+  <div class="row">
+    <div class="row-left">
+      <div class="id">mattjun11</div>
+      <div class="link"><a href="https://www.instagram.com/mattjun11/reels/" target="_blank">instagram.com/mattjun11/reels/</a></div>
+    </div>
+    <div class="row-right">
+      <div class="time">오후 7시</div>
+    </div>
+  </div>
+</div>
+
+<p class="count">총 4명</p>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>루프808 인플루언서 캠페인 결과</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@400;600;700&display=swap">
+<style>
+  :root { --c: #FF5733; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #fff; color: #111;
+    font-family: 'Noto Sans KR', system-ui, sans-serif;
+    font-size: 15px;
+    padding-inline: max(20px, env(safe-area-inset-left,0px)) max(20px, env(safe-area-inset-right,0px));
+    padding-block: 40px 64px;
+  }
+  .wrap { max-width: 1300px; margin-inline: auto; }
+  .brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 16vw, 96px);
+    letter-spacing: 0.06em;
+    color: var(--c); line-height: 1; display: block; margin-bottom: 6px;
+  }
+  .tagline { font-size: 14px; font-weight: 600; color: #111; margin-bottom: 28px; }
+  .summary-title { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #111; margin-bottom: 12px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 24px; }
+  @media(min-width:480px){.stats-grid{grid-template-columns:repeat(4,1fr);}}
+  .stat-box { border: 2px solid #111; border-radius: 6px; padding: 14px 14px 12px; }
+  .stat-box.wide { grid-column: span 2; }
+  .stat-label { font-size: 12px; font-weight: 600; color: #111; margin-bottom: 6px; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px,7vw,36px); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: #111; line-height: 1; }
+  .stat-num.hi { color: var(--c); }
+  .stat-unit { font-family: 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: 600; margin-left: 2px; }
+  .stat-sub { font-size: 11px; color: #666; margin-top: 5px; }
+  .round-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 32px; }
+  .round-box { border: 1.5px solid #e0e0e0; border-radius: 6px; padding: 12px 14px; }
+  .round-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+  .round-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(20px,5vw,26px); color: var(--c); line-height: 1; }
+  .round-detail { font-size: 11px; color: #888; margin-top: 3px; }
+  .section-title { font-size: 13px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: #111; margin-bottom: 10px; }
+  .tbl-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; table-layout: fixed; min-width: 740px; }
+  .tbl-ext { min-width: 600px; }
+  col.c-num   { width: 36px; }
+  col.c-id    { width: 170px; }
+  col.c-date  { width: 62px; }
+  col.c-view  { width: 80px; }
+  col.c-like  { width: 76px; }
+  col.c-share { width: 76px; }
+  col.c-save  { width: 76px; }
+  col.c-cost  { width: 72px; }
+  col.c-cpv   { width: 60px; }
+  col.c-ssp   { width: 68px; }
+  col.c-type  { width: 56px; }
+  thead tr { border-bottom: 2px solid #111; }
+  th { padding: 9px 10px; font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: #111; font-weight: 700; text-align: right; white-space: nowrap; }
+  th:nth-child(-n+2) { text-align: left; }
+  td { padding: 11px 10px 3px; border-bottom: none; font-size: 14px; text-align: right; color: #111; vertical-align: middle; white-space: nowrap; }
+  td:nth-child(-n+2) { text-align: left; }
+  td.id { white-space: normal; }
+  .id-link { color: #111; text-decoration: none; font-weight: 700; font-size: 14px; }
+  .id-link:hover { color: var(--c); }
+  .nv { color: var(--c); font-weight: 700; }
+  .ns { font-weight: 700; }
+  .na { color: #bbb; font-size: 12px; }
+  .r1 { display: inline-block; font-size: 10px; font-weight: 700; color: var(--c); border: 1.5px solid var(--c); border-radius: 3px; padding: 1px 4px; white-space: nowrap; vertical-align: middle; }
+  .r2 { display: inline-block; font-size: 10px; font-weight: 700; color: #555; border: 1.5px solid #bbb; border-radius: 3px; padding: 1px 4px; white-space: nowrap; vertical-align: middle; }
+  .acct-row td { padding: 2px 10px 11px; font-size: 12px; color: #555; text-align: left; border-bottom: 1px solid #e0e0e0; }
+  .acct-name { font-weight: 600; color: #333; }
+  .acct-num { color: #777; margin-left: 6px; letter-spacing: 0.03em; }
+  .row-sep td { border-top: 2px dashed #ccc; }
+  tfoot td { padding: 13px 10px; border-top: 2px solid #111; border-bottom: none; font-size: 18px; font-weight: 700; text-align: right; color: #111; }
+  tfoot td:nth-child(-n+2) { text-align: left; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; }
+  .view-tabs { display: flex; gap: 6px; margin-bottom: 28px; }
+  .view-tab {
+    padding: 7px 18px; border-radius: 20px; font-size: 13px; font-weight: 700;
+    cursor: pointer; border: 2px solid #111; background: #fff; color: #111;
+    font-family: inherit; transition: background .15s, color .15s;
+  }
+  .view-tab.active { background: #111; color: #fff; }
+  .section { display: none; }
+  .section.visible { display: block; }
+  .note { font-size: 11px; color: #999; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="brand">LOOP 808</span>
+  <p class="tagline">인플루언서 캠페인 결과 · 2026.08 · 14개 계정 · 공유·저장 2026.11.02 기준</p>
+
+  <div class="view-tabs">
+    <button class="view-tab active" data-view="internal">내부용</button>
+    <button class="view-tab" data-view="external">외부용</button>
+  </div>
+
+  <!-- ===== 내부용 ===== -->
+  <div class="section visible" id="view-internal">
+  <div class="summary-title">캠페인 전체 합계</div>
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-label">예산</div><div class="stat-num">1,065<span class="stat-unit">만원</span></div></div>
+    <div class="stat-box"><div class="stat-label">총 조회수</div><div class="stat-num hi">647.2<span class="stat-unit">만</span></div></div>
+    <div class="stat-box"><div class="stat-label">CPV</div><div class="stat-num hi">1.6<span class="stat-unit">원</span></div></div>
+    <div class="stat-box"><div class="stat-label">총 공유</div><div class="stat-num">74,571<span class="stat-unit">건</span></div></div>
+    <div class="stat-box"><div class="stat-label">총 저장</div><div class="stat-num">56,099<span class="stat-unit">건</span></div></div>
+    <div class="stat-box"><div class="stat-label">저장공유단가</div><div class="stat-num">81.5<span class="stat-unit">원</span></div></div>
+  </div>
+
+  <div class="summary-title">회차별 요약</div>
+  <div class="round-grid">
+    <div class="round-box">
+      <div class="round-label">뷰위주</div>
+      <div class="round-num">275.4<span style="font-family:'Noto Sans KR';font-size:13px;font-weight:600;margin-left:2px">만</span></div>
+      <div class="round-detail">8개 · 505만원 · CPV 1.83원</div>
+      <div class="round-detail">08.09~08.19</div>
+    </div>
+    <div class="round-box">
+      <div class="round-label">빙수</div>
+      <div class="round-num">371.8<span style="font-family:'Noto Sans KR';font-size:13px;font-weight:600;margin-left:2px">만</span></div>
+      <div class="round-detail">6개 · 560만원 · CPV 1.51원</div>
+      <div class="round-detail">08.06~08.14</div>
+    </div>
+  </div>
+
+  <div class="section-title">계정별 수치</div>
+  <div class="tbl-wrap">
+  <table>
+    <colgroup>
+      <col class="c-num"><col class="c-id">
+      <col class="c-date"><col class="c-view">
+      <col class="c-share"><col class="c-save">
+      <col class="c-cost"><col class="c-cpv"><col class="c-ssp"><col class="c-type">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>#</th><th>아이디</th>
+        <th>업로드일</th><th>조회수</th><th>공유</th><th>저장</th>
+        <th>비용</th><th>CPV</th><th>저장공유단가</th><th>구분</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db2q_org4iY/" target="_blank">hid_zip</a> <span class="r1">뷰위주</span></td><td>08.10</td><td class="nv">250만</td><td class="ns">3.3만</td><td class="ns">3.1만</td><td class="ns">65만</td><td class="ns">0.3원</td><td class="ns">10원</td><td>사업자</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">토스뱅크</span><span class="acct-sep"> · </span><span class="acct-name">노가연(히트에드)</span><span class="acct-sep"> · </span><span class="acct-num">1000-5770-4956</span></td></tr>
+      <tr><td>2</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Dbz9kpJIrf5/" target="_blank">_plan_book</a> <span class="r1">뷰위주</span></td><td>08.09</td><td class="nv">15.2만</td><td class="ns">2,848</td><td class="ns">4,174</td><td class="ns">90만</td><td class="ns">5.9원</td><td class="ns">128원</td><td>사업자</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">신한은행</span><span class="acct-sep"> · </span><span class="acct-name">송은별(플랜북)</span><span class="acct-sep"> · </span><span class="acct-num">110-625-608922</span></td></tr>
+      <tr><td>3</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db98B2xpxCy/" target="_blank">tasty.gangnam</a> <span class="r1">뷰위주</span></td><td>08.13</td><td class="nv">2.3만</td><td class="ns">224</td><td class="ns">12</td><td class="ns">35만</td><td class="ns">15.2원</td><td class="ns">1,483원</td><td>사업자</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">NH농협</span><span class="acct-sep"> · </span><span class="acct-name">이태훈(말캉커뮤니케이션)</span><span class="acct-sep"> · </span><span class="acct-num">351-0861-0282-53</span></td></tr>
+      <tr><td>4</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db25nyxz9wq/" target="_blank">chloe__story</a> <span class="r1">뷰위주</span></td><td>08.10</td><td class="nv">3.1만</td><td class="ns">1,159</td><td class="ns">756</td><td class="ns">60만</td><td class="ns">19.4원</td><td class="ns">313원</td><td>개인</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">카카오뱅크</span><span class="acct-sep"> · </span><span class="acct-name">이세희</span><span class="acct-sep"> · </span><span class="acct-num">3333-06-2240443</span></td></tr>
+      <tr><td>5</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db5nXXGpKoP/" target="_blank">a.0_daily</a> <span class="r1">뷰위주</span></td><td>08.11</td><td class="nv">1.7만</td><td class="ns">95</td><td class="ns">202</td><td class="ns">45만</td><td class="ns">26.5원</td><td class="ns">1,515원</td><td>개인</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">토스뱅크</span><span class="acct-sep"> · </span><span class="acct-name">조아영</span><span class="acct-sep"> · </span><span class="acct-num">1001-3328-1317</span></td></tr>
+      <tr><td>6</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/DcLKG5nBVOb/" target="_blank">reneve__</a> <span class="r1">뷰위주</span></td><td>08.19</td><td class="nv">29.2만</td><td class="ns">1만</td><td class="ns">1.2만</td><td class="ns">95만</td><td class="ns">3.3원</td><td class="ns">43원</td><td>사업자</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">신한은행</span><span class="acct-sep"> · </span><span class="acct-name">조주희(르네브)</span><span class="acct-sep"> · </span><span class="acct-num">110-583-304405</span></td></tr>
+      <tr><td>7</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db8G4d7BLvj/" target="_blank">mukbbo_date</a> <span class="r1">뷰위주</span></td><td>08.12</td><td class="nv">1.5만</td><td class="ns">193</td><td class="ns">106</td><td class="ns">35만</td><td class="ns">23.3원</td><td class="ns">1,171원</td><td>개인</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">토스뱅크</span><span class="acct-sep"> · </span><span class="acct-name">이지원</span><span class="acct-sep"> · </span><span class="acct-num">1000-1457-3780</span></td></tr>
+      <tr><td>8</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/DcLmJjGTMIO/" target="_blank">a.zihyyyy</a> <span class="r1">뷰위주</span></td><td>08.19</td><td class="nv">1.4만</td><td class="ns">613</td><td class="ns">663</td><td class="ns">80만</td><td class="ns">57.1원</td><td class="ns">627원</td><td>개인</td></tr>
+      <tr class="acct-row"><td colspan="10"><span class="acct-name">농협 · 유지혜</span><span class="acct-num">356-0183-0700-63</span></td></tr>
+
+      <tr class="row-sep"><td>9</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db292BRplYj/" target="_blank">biteofyommy</a> <span class="r2">빙수</span></td><td>08.10</td><td class="nv">46.9만</td><td class="ns">7,999</td><td class="ns">1,930</td><td class="ns">90만</td><td class="ns">1.9원</td><td class="ns">91원</td><td>사업자</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">신한은행</span><span class="acct-sep"> · </span><span class="acct-name">안아린(요미)</span><span class="acct-sep"> · </span><span class="acct-num">110-561-374364</span></td></tr>
+      <tr><td>10</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db0iRNNPva4/" target="_blank">my_season___</a> <span class="r2">빙수</span></td><td>08.09</td><td class="nv">12.1만</td><td class="ns">1,620</td><td class="ns">652</td><td class="ns">180만</td><td class="ns">14.9원</td><td class="ns">792원</td><td>사업자</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">카카오뱅크</span><span class="acct-sep"> · </span><span class="acct-name">이가을(공간빵)</span><span class="acct-sep"> · </span><span class="acct-num">3333-34-4128356</span></td></tr>
+      <tr><td>11</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db7ZZCyhwdv/" target="_blank">seoulfeel_</a> <span class="r2">빙수</span></td><td>08.12</td><td class="nv">119.9만</td><td class="ns">655</td><td class="ns">216</td><td class="ns">50만</td><td class="ns">0.4원</td><td class="ns">574원</td><td>사업자</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">KB국민은행</span><span class="acct-sep"> · </span><span class="acct-name">김나영(영마케팅)</span><span class="acct-sep"> · </span><span class="acct-num">087937-04-008364</span></td></tr>
+      <tr><td>12</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/DcAM_5iPPlR/" target="_blank">sh.cookkook</a> <span class="r2">빙수</span></td><td>08.14</td><td class="nv">6.1만</td><td class="ns">1,092</td><td class="ns">379</td><td class="ns">80만</td><td class="ns">13.1원</td><td class="ns">544원</td><td>사업자</td></tr>
+      <tr class="acct-row"><td colspan="10"><span class="acct-name">카카오뱅크 · 신은정(신콕)</span><span class="acct-num">3333-30-3294549</span></td></tr>
+      <tr><td>13</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db-YnH-IXQB/" target="_blank">min.ddo_o</a> <span class="r2">빙수</span></td><td>08.13</td><td class="nv">56.8만</td><td class="ns">9,375</td><td class="ns">3,059</td><td class="ns">70만</td><td class="ns">1.2원</td><td class="ns">56원</td><td>사업자</td></tr>
+<tr class="acct-row"><td colspan="10"><span class="acct-bank">신한은행</span><span class="acct-sep"> · </span><span class="acct-name">김민정(민컴퍼니)</span><span class="acct-sep"> · </span><span class="acct-num">110-590-561135</span></td></tr>
+      <tr><td>14</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/DbrjYuQTTiV/" target="_blank">hey_jihye__</a> <span class="r2">빙수</span></td><td>08.06</td><td class="nv">130만</td><td class="ns">5,698</td><td class="ns">950</td><td class="ns">90만</td><td class="ns">0.7원</td><td class="ns">135원</td><td>사업자</td></tr>
+      <tr class="acct-row"><td colspan="10"><span class="acct-name">하나은행 · 김형준</span><span class="acct-num">38691045225507</span></td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2">합계</td>
+        <td></td>
+        <td class="nv">647.2만</td>
+        <td class="ns">74,571</td>
+        <td class="ns">56,099</td>
+        <td class="ns">1,065만</td>
+        <td class="ns">1.6원</td>
+        <td class="ns">81.5원</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+  </div><!-- /view-internal -->
+
+  <!-- ===== 외부용 ===== -->
+  <div class="section" id="view-external">
+  <div class="summary-title">캠페인 전체 합계</div>
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-label">예산</div><div class="stat-num">2,000<span class="stat-unit">만원</span></div></div>
+    <div class="stat-box"><div class="stat-label">총 조회수</div><div class="stat-num hi">647.2<span class="stat-unit">만</span></div></div>
+    <div class="stat-box"><div class="stat-label">CPV</div><div class="stat-num hi">3.1<span class="stat-unit">원</span></div></div>
+    <div class="stat-box"><div class="stat-label">총 공유</div><div class="stat-num">74,571<span class="stat-unit">건</span></div></div>
+    <div class="stat-box"><div class="stat-label">총 저장</div><div class="stat-num">56,099<span class="stat-unit">건</span></div></div>
+    <div class="stat-box"><div class="stat-label">저장공유단가</div><div class="stat-num">153<span class="stat-unit">원</span></div></div>
+    <div class="stat-box wide"><div class="stat-label">뷰위주</div><div class="stat-num hi">275.4<span class="stat-unit">만</span></div><div class="stat-sub">8개 계정 · 08.09~08.19</div></div>
+    <div class="stat-box wide"><div class="stat-label">빙수</div><div class="stat-num">371.8<span class="stat-unit">만</span></div><div class="stat-sub">6개 계정 · 08.06~08.14</div></div>
+  </div>
+
+  <div class="section-title">계정별 수치</div>
+  <div class="tbl-wrap">
+  <table class="tbl-ext">
+    <colgroup>
+      <col class="c-num"><col class="c-id">
+      <col class="c-date"><col class="c-view">
+      <col class="c-share"><col class="c-save">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>#</th><th>아이디</th>
+        <th>업로드일</th><th>조회수</th><th>공유</th><th>저장</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db2q_org4iY/" target="_blank">hid_zip</a> <span class="r1">뷰위주</span></td><td>08.10</td><td class="nv">250만</td><td class="ns">3.3만</td><td class="ns">3.1만</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">토스뱅크</span><span class="acct-sep"> · </span><span class="acct-name">노가연(히트에드)</span><span class="acct-sep"> · </span><span class="acct-num">1000-5770-4956</span></td></tr>
+      <tr><td>2</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Dbz9kpJIrf5/" target="_blank">_plan_book</a> <span class="r1">뷰위주</span></td><td>08.09</td><td class="nv">15.2만</td><td class="ns">2,848</td><td class="ns">4,174</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">신한은행</span><span class="acct-sep"> · </span><span class="acct-name">송은별(플랜북)</span><span class="acct-sep"> · </span><span class="acct-num">110-625-608922</span></td></tr>
+      <tr><td>3</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db98B2xpxCy/" target="_blank">tasty.gangnam</a> <span class="r1">뷰위주</span></td><td>08.13</td><td class="nv">2.3만</td><td class="ns">224</td><td class="ns">12</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">NH농협</span><span class="acct-sep"> · </span><span class="acct-name">이태훈(말캉커뮤니케이션)</span><span class="acct-sep"> · </span><span class="acct-num">351-0861-0282-53</span></td></tr>
+      <tr><td>4</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db25nyxz9wq/" target="_blank">chloe__story</a> <span class="r1">뷰위주</span></td><td>08.10</td><td class="nv">3.1만</td><td class="ns">1,159</td><td class="ns">756</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">카카오뱅크</span><span class="acct-sep"> · </span><span class="acct-name">이세희</span><span class="acct-sep"> · </span><span class="acct-num">3333-06-2240443</span></td></tr>
+      <tr><td>5</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db5nXXGpKoP/" target="_blank">a.0_daily</a> <span class="r1">뷰위주</span></td><td>08.11</td><td class="nv">1.7만</td><td class="ns">95</td><td class="ns">202</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">토스뱅크</span><span class="acct-sep"> · </span><span class="acct-name">조아영</span><span class="acct-sep"> · </span><span class="acct-num">1001-3328-1317</span></td></tr>
+      <tr><td>6</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/DcLKG5nBVOb/" target="_blank">reneve__</a> <span class="r1">뷰위주</span></td><td>08.19</td><td class="nv">29.2만</td><td class="ns">1만</td><td class="ns">1.2만</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">신한은행</span><span class="acct-sep"> · </span><span class="acct-name">조주희(르네브)</span><span class="acct-sep"> · </span><span class="acct-num">110-583-304405</span></td></tr>
+      <tr><td>7</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db8G4d7BLvj/" target="_blank">mukbbo_date</a> <span class="r1">뷰위주</span></td><td>08.12</td><td class="nv">1.5만</td><td class="ns">193</td><td class="ns">106</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">토스뱅크</span><span class="acct-sep"> · </span><span class="acct-name">이지원</span><span class="acct-sep"> · </span><span class="acct-num">1000-1457-3780</span></td></tr>
+      <tr><td>8</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/DcLmJjGTMIO/" target="_blank">a.zihyyyy</a> <span class="r1">뷰위주</span></td><td>08.19</td><td class="nv">1.4만</td><td class="ns">613</td><td class="ns">663</td></tr>
+      <tr class="row-sep"><td>9</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db292BRplYj/" target="_blank">biteofyommy</a> <span class="r2">빙수</span></td><td>08.10</td><td class="nv">46.9만</td><td class="ns">7,999</td><td class="ns">1,930</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">신한은행</span><span class="acct-sep"> · </span><span class="acct-name">안아린(요미)</span><span class="acct-sep"> · </span><span class="acct-num">110-561-374364</span></td></tr>
+      <tr><td>10</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db0iRNNPva4/" target="_blank">my_season___</a> <span class="r2">빙수</span></td><td>08.09</td><td class="nv">12.1만</td><td class="ns">1,620</td><td class="ns">652</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">카카오뱅크</span><span class="acct-sep"> · </span><span class="acct-name">이가을(공간빵)</span><span class="acct-sep"> · </span><span class="acct-num">3333-34-4128356</span></td></tr>
+      <tr><td>11</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db7ZZCyhwdv/" target="_blank">seoulfeel_</a> <span class="r2">빙수</span></td><td>08.12</td><td class="nv">119.9만</td><td class="ns">655</td><td class="ns">216</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">KB국민은행</span><span class="acct-sep"> · </span><span class="acct-name">김나영(영마케팅)</span><span class="acct-sep"> · </span><span class="acct-num">087937-04-008364</span></td></tr>
+      <tr><td>12</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/DcAM_5iPPlR/" target="_blank">sh.cookkook</a> <span class="r2">빙수</span></td><td>08.14</td><td class="nv">6.1만</td><td class="ns">1,092</td><td class="ns">379</td></tr>
+      <tr><td>13</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/Db-YnH-IXQB/" target="_blank">min.ddo_o</a> <span class="r2">빙수</span></td><td>08.13</td><td class="nv">56.8만</td><td class="ns">9,375</td><td class="ns">3,059</td></tr>
+<tr class="acct-row"><td colspan="9"><span class="acct-bank">신한은행</span><span class="acct-sep"> · </span><span class="acct-name">김민정(민컴퍼니)</span><span class="acct-sep"> · </span><span class="acct-num">110-590-561135</span></td></tr>
+      <tr><td>14</td><td class="id"><a class="id-link" href="https://www.instagram.com/reel/DbrjYuQTTiV/" target="_blank">hey_jihye__</a> <span class="r2">빙수</span></td><td>08.06</td><td class="nv">130만</td><td class="ns">5,698</td><td class="ns">950</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2">합계</td>
+        <td></td>
+        <td class="nv">647.2만</td>
+        <td class="ns">74,571</td>
+        <td class="ns">56,099</td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+  </div><!-- /view-external -->
+
+</div>
+<script>
+  document.querySelectorAll('.view-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+      tab.classList.add('active');
+      document.getElementById('view-' + tab.dataset.view).classList.add('visible');
+    });
+  });
+</script>
+</body>
+</html>

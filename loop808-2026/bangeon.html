@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>방어 인플루언서 리스트</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #f7f6f4;
+    --surface: #ffffff;
+    --border: #e8e5e1;
+    --fg: #1a1816;
+    --fg-muted: #7a7570;
+    --accent: #c8541a;
+    --accent-bg: #fdf0ea;
+    --tag-bg: #f0ede9;
+    --tag-fg: #5a5450;
+    --badge-cpv: #e8f4ed;
+    --badge-cpv-fg: #1f7a3f;
+    --badge-sv: #eef1f9;
+    --badge-sv-fg: #2b4fa8;
+    --candidate: #f3f0fb;
+    --candidate-fg: #5b3faa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141210;
+      --surface: #1e1c1a;
+      --border: #2e2b28;
+      --fg: #f0ede9;
+      --fg-muted: #8a857e;
+      --accent: #e06830;
+      --accent-bg: #2a1a10;
+      --tag-bg: #2a2724;
+      --tag-fg: #b0aba4;
+      --badge-cpv: #142218;
+      --badge-cpv-fg: #5ec27a;
+      --badge-sv: #111828;
+      --badge-sv-fg: #7ea4e8;
+      --candidate: #1a1430;
+      --candidate-fg: #a98cf0;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding-block: 32px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .page { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+  .header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+  .header h1 { font-size: 16px; font-weight: 700; margin: 0; color: var(--fg); letter-spacing: -0.01em; }
+  .header .count { font-size: 12px; color: var(--fg-muted); }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .card:hover { border-color: var(--accent); box-shadow: 0 2px 8px rgba(200,84,26,0.12); }
+  .avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--accent-bg); border: 2px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 15px; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: -0.02em;
+  }
+  .info { flex: 1; min-width: 0; }
+  .handle { font-weight: 600; font-size: 14px; color: var(--fg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .handle .at { color: var(--fg-muted); font-weight: 400; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+  .tag { font-size: 11px; padding: 2px 7px; border-radius: 4px; background: var(--tag-bg); color: var(--tag-fg); font-weight: 500; white-space: nowrap; }
+  .tag.partner { background: var(--accent-bg); color: var(--accent); }
+  .tag.candidate { background: var(--candidate); color: var(--candidate-fg); }
+  .metrics { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+  .price { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--fg); letter-spacing: -0.02em; }
+  .badges { display: flex; gap: 5px; }
+  .badge { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .badge.cpv { background: var(--badge-cpv); color: var(--badge-cpv-fg); }
+  .badge.sv { background: var(--badge-sv); color: var(--badge-sv-fg); }
+  .footer { margin-top: 8px; display: flex; gap: 20px; flex-wrap: wrap; padding: 0 2px; }
+  .legend { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--fg-muted); }
+  .legend .dot { width: 8px; height: 8px; border-radius: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <h1>방어 인플루언서</h1>
+    <span class="count">5명</span>
+  </div>
+
+  <a class="card" href="https://www.instagram.com/muk._.suzy_/" target="_blank" rel="noopener">
+    <div class="avatar">S</div>
+    <div class="info">
+      <div class="handle"><span class="at">@</span>muk._.suzy_</div>
+      <div class="tags">
+        <span class="tag partner">방어소금김밥</span>
+        <span class="tag">평균 537K</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="price">70만원</div>
+      <div class="badges">
+        <span class="badge cpv">CPV 1.3</span>
+        <span class="badge sv">저장공유 6.6</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="card" href="https://www.instagram.com/p/DSKl9LXEprZ/" target="_blank" rel="noopener">
+    <div class="avatar">B</div>
+    <div class="info">
+      <div class="handle"><span class="at">@</span>biteofyommy</div>
+      <div class="tags">
+        <span class="tag partner">방어소금김밥</span>
+        <span class="tag">평균 655K</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="price">100만원</div>
+      <div class="badges">
+        <span class="badge cpv">CPV 1.5</span>
+        <span class="badge sv">저장공유 11.6</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="card" href="https://www.instagram.com/mattjun11/reels/" target="_blank" rel="noopener">
+    <div class="avatar">M</div>
+    <div class="info">
+      <div class="handle"><span class="at">@</span>mattjun11</div>
+      <div class="tags">
+        <span class="tag">평균 460K</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="price">70만원</div>
+      <div class="badges">
+        <span class="badge cpv">CPV 1.5</span>
+        <span class="badge sv">저장공유 7.3</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="card" href="https://www.instagram.com/muk_tteul/reels/" target="_blank" rel="noopener">
+    <div class="avatar">T</div>
+    <div class="info">
+      <div class="handle"><span class="at">@</span>muk_tteul</div>
+      <div class="tags">
+        <span class="tag candidate">후보</span>
+        <span class="tag">평균 241K</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="price">90만원</div>
+      <div class="badges">
+        <span class="badge cpv">CPV 2.5</span>
+        <span class="badge sv">저장공유 11.9</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="card" href="https://www.instagram.com/p/DWQpYW9EpZT/" target="_blank" rel="noopener">
+    <div class="avatar">U</div>
+    <div class="info">
+      <div class="handle"><span class="at">@</span>themukeou</div>
+      <div class="tags">
+        <span class="tag candidate">후보</span>
+        <span class="tag">평균 383K</span>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="price">60만원</div>
+      <div class="badges">
+        <span class="badge cpv">CPV 2.3</span>
+        <span class="badge sv">저장공유 114.6</span>
+      </div>
+    </div>
+  </a>
+
+  <div class="footer">
+    <div class="legend">
+      <div class="dot" style="background: var(--badge-cpv-fg)"></div>
+      CPV = 단가 ÷ 평균조회수 (원)
+    </div>
+    <div class="legend">
+      <div class="dot" style="background: var(--badge-sv-fg)"></div>
+      저장공유단가 = 단가 ÷ (저장+공유)
+    </div>
+  </div>
+</div>
+</body>
+</html>
